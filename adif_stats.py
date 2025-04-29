@@ -64,7 +64,7 @@ for qso in qsos:
 		modes[mode] += 1
 
 		# parse states
-		if state and state in all_states and (dxcc == "291" or dxcc == None):
+		if state and state in all_states and (dxcc == "291" or dxcc == "6" or dxcc == None):
 			states.setdefault(state, 0)
 			states[state] += 1
 
@@ -85,6 +85,7 @@ for qso in qsos:
 			
 
 		# parse dxcc
+		# https://adif.org/315/ADIF_315.htm#DXCC_Entity_Code_Enumeration
 		if dxcc:
 			dxccs.setdefault(dxcc, 0)
 			dxccs[dxcc] += 1
