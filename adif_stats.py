@@ -158,7 +158,9 @@ for mode in sorted(modes.keys()):
 			missing_states += f"{state} "
 
 	if len(missing_states) >= len(all_states)*3:
-		missing_states = " " + str(len(all_states))
+		missing_states = str(len(all_states))
+	if (missing_states == ""):
+		missing_states = "None"
 
 	print(f"{mode}\t{len(state_by_mode)} out of {len(all_states)}; missing: {missing_states}")
 
@@ -167,14 +169,17 @@ worked_states = 0
 for state in all_states:
 	qso_count = states.get(state, 0)
 	if qso_count == 0:
-		missing_states += " " + state
+		missing_states += f"{state} "
 	else:
 		worked_states += 1
 
 if len(missing_states) >= len(all_states)*3:
-	missing_states = " " + str(len(all_states))
+	missing_states = str(len(all_states))
+else:
+	if (missing_states == ""):
+		missing_states = "None"
 
-print(f"Overall: {worked_states} out of {len(all_states)} total (missing:{missing_states})")
+print(f"Overall: {worked_states} out of {len(all_states)} total; missing: {missing_states}")
 
 # print provinces stats
 print("\r\nTotal Canadian provinces worked by mode:")
@@ -190,7 +195,10 @@ for mode in sorted(modes.keys()):
 			missing_provinces += f"{province} "
 
 	if len(missing_provinces) >= len(all_provinces)*3:
-		missing_provinces = " " + str(len(all_states))
+		missing_provinces = str(len(all_states))
+	else:
+		if (missing_provinces == ""):
+			missing_provinces = "None"
 
 	print(f"{mode}\t{len(province_by_mode)} ({' '.join(sorted(worked_provinces))}) out of {len(all_provinces)}; missing: {missing_provinces}")
 
@@ -199,14 +207,16 @@ worked_provinces = 0
 for province in all_provinces:
 	qso_count = provinces.get(province, 0)
 	if qso_count == 0:
-		missing_provinces += " " + province
+		missing_provinces += f"{province} "
 	else:
 		worked_provinces += 1
 
 if len(missing_provinces) >= 150:
-	missing_provinces = " " + str(len(all_provinces))
-
-print(f"Overall: {worked_provinces} out of {len(all_provinces)} total (missing:{missing_provinces})")
+	missing_provinces = str(len(all_provinces))
+else:
+	if (missing_provinces == ""):
+		missing_provinces = "None"
+print(f"Overall: {worked_provinces} out of {len(all_provinces)} total; missing: {missing_provinces}")
 
 
 # print qso by operator
