@@ -1,2 +1,5 @@
 *.adi
 *.adif
+*.log
+*.csv
+
